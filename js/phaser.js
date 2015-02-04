@@ -25,7 +25,7 @@
 *
 * "If you want your children to be intelligent,  read them fairy tales."
 * "If you want them to be more intelligent, read them more fairy tales."
-*                                                     -- Albert Einstein
+*                                                    edit2 -- Albert Einstein
 */
 
 /**
