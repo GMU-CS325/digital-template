@@ -23,6 +23,7 @@ window.onload = function() {
         // Load an image and call it 'logo'.
         game.load.image( 'logo', 'assets/ed2.png' );
         game.load.image('floor', 'assets/wood.png');
+        game.load.image('floor', 'assets/dodgeball.png');
     }
     
     var bouncy;
@@ -69,6 +70,8 @@ window.onload = function() {
 
     ball.body.collideWorldBounds = true;
     ball.body.bounce.set(1);
+    ball.body.velocity.y = -300;
+    ball.body.velocity.x = -75;
     }
     
     function update() {
@@ -99,8 +102,11 @@ function ballHitPlayer (_ball, _bouncy) {
 
 function render() {
 
-    game.debug.text('Time until event: ' + timer.duration.toFixed(0), 32, 32);
-    game.debug.text('Loop Count: ' + total, 32, 64);
+    game.debug.text('Time until new ball: ' + timer.duration.toFixed(0), 32, 32);
+    game.debug.text('Balls: ' + total, 32, 64);
+    ball = game.add.sprite(game.world.centerX, game.world.centerY, 'dodgeball', 'assets/dodgeball.png');
+    ball.body.velocity.y = -300;
+    ball.body.velocity.x = -75;
 
 }
 
