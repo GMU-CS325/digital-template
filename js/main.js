@@ -30,11 +30,11 @@ window.onload = function() {
     
     function create() {
         
-        flooring = game.add.tileSprite(0, 0, 800, 600, 'earth');
+        flooring = game.add.tileSprite(0, 0, 800, 600, 'wood');
         flooring.fixedToCamera = true;
         
         // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
+        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'Ed', 'assets/ed2.png' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         bouncy.anchor.setTo( 0.5, 0.5 );
