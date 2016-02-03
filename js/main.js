@@ -11,34 +11,32 @@ window.onload = function() {
     // loading functions to reflect where you are putting the assets.
     // All loading functions will typically all be found inside "preload()".
     
-    "use strict";
+    //Borrowed assets as followed:
+    //Grass sprite: Pokemon Gold screenshot
+    //Firefighter: http://vincebetteridge.com/firefighter/player.png 40x30
     
-    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
+    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update} );
     
     function preload() {
-        // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
+        // 
+        game.load.image( 'grass', 'assets/grass.png' );
+        game.load.spritesheet( 'firefighter', 'assets/firefighter.png', 40, 30);
     }
     
-    var bouncy;
+    var background;
+    var player;
     
     function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
+        background = game.add.tileSprite(0, 0, 800, 600, 'grass');       
         
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
+        //attempting to add player sprite
+        player = game.add.sprite(game.world.centerX, game.world.centerY, 'firefighter');
         
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something awesome.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+        player.animations.add('idleRight', [88, 89, 90, 91], 8, true, true);
+        player.animations.add('idleLeft', [92, 93, 94, 95], 8, true, true);
+        player.animations.add('runRight', [0, 1, 2, 3, 4, 5, 6, 7], 20, true, true);
+        player.animations.add('runLeft', [32, 33, 34, 35, 36, 37, 38, 39], 20, true, true);
+        
     }
     
     function update() {
@@ -47,6 +45,24 @@ window.onload = function() {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
+        if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+        {
+            character.x -= 4;
+        }
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+        {
+            character.x += 4;
+        }
+
+        if (game.input.keyboard.isDown(Phaser.Keyboard.UP))
+        {
+            character.y -= 4;
+        }
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
+        {
+            character.y += 4;
+        }
+
     }
+    
 };
