@@ -37,6 +37,8 @@ window.onload = function() {
         player.animations.add('runRight', [0, 1, 2, 3, 4, 5, 6, 7], 20, true, true);
         player.animations.add('runLeft', [32, 33, 34, 35, 36, 37, 38, 39], 20, true, true);
         
+        //starting animation
+        player.animations.play('idleRight');
     }
     
     function update() {
@@ -47,20 +49,33 @@ window.onload = function() {
         // new trajectory.
         if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
         {
-            character.x -= 4;
+            player.x -= 4;
+            player.animations.play('runLeft');
         }
         else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
         {
-            character.x += 4;
+            player.x += 4;
+            player.animations.play('runRight');
         }
 
-        if (game.input.keyboard.isDown(Phaser.Keyboard.UP))
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.UP))
         {
-            character.y -= 4;
+            player.y -= 4;
         }
+        
         else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
         {
-            character.y += 4;
+            player.y += 4;
+        }
+        
+        else if ((player.animations.name = 'runLeft') && (game.input.keyboard.isDown(Phaser.Keyboard.LEFT) == false))
+        {
+            player.animations.play('idleLeft');        
+        }
+        
+        else if ((player.animations.name = 'runRight') && (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) == false))
+        {
+            player.animations.play('idleRight');        
         }
 
     }
