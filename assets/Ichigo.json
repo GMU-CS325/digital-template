@@ -1,0 +1,20 @@
+{"frames": {
+
+"Ichigo.png":
+{
+	"frame": {"x":1,"y":1,"w":1386,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":1386,"h":58},
+	"sourceSize": {"w":1395,"h":58}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Ichigo.png",
+	"format": "RGBA8888",
+	"size": {"w":1388,"h":60},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c1869e39c6b58f14c88847cdbc392133:e3bde8ac994427e2dbb4cbc60faaf694:02693341a6a7d8de9acea0dd2bc91d75$"
+}
+}
