@@ -137,7 +137,7 @@ function update() {
     {
         player.body.velocity.y = -350;
     }
-     if(stars.countLiving()==0)
+     if(stars.countLiving()==0 || timer.running()==false)
         {
             timer.stop();
       goText = this.game.add.text(game.world.centerX-100,game.world.centerY,' ', { font: '40px Arial', fill: '#D80000', align: 'center' });
